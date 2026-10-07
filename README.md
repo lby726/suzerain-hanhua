@@ -2,7 +2,7 @@
 
 由 **lby726** 制作和维护，供拥有正版《Suzerain》的玩家免费使用。项目采用机器翻译、AI 辅助校对和人工修订，持续修正错译与术语。
 
-**[下载汉化包](https://github.com/lby726/suzerain-hanhua/releases/latest)** · **[反馈问题](https://github.com/lby726/suzerain-hanhua/issues)**
+**[国内下载 · 123 云盘（v12）](https://1815736584.share.123pan.cn/123pan/6v8zVv-q6qWH)** · **[GitHub 下载（备用）](https://github.com/lby726/suzerain-hanhua/releases/latest)** · **[反馈问题](https://github.com/lby726/suzerain-hanhua/issues)**
 
 ## 适用版本
 
@@ -13,9 +13,16 @@
 
 本版针对上述构建制作。更新游戏后，请先确认汉化包是否适配新版本。
 
+## 下载
+
+- [123 云盘 · v12 国内下载](https://1815736584.share.123pan.cn/123pan/6v8zVv-q6qWH)：文件名为 `Suzerain_简体中文汉化包_v12.zip`。
+- [GitHub Release · 备用下载](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.0.0)：附件名为 `Suzerain_zh-CN_v12.zip`。
+
+两个入口提供同一版汉化安装包，约 229 MB。文件名不同不影响安装；下载后可核对下方 SHA-256。
+
 ## 安装
 
-1. 退出游戏，在 [Releases](https://github.com/lby726/suzerain-hanhua/releases/latest) 下载汉化 **ZIP 附件**，不要下载 `Source code`。
+1. 退出游戏，从上方任一下载入口获取汉化 ZIP；使用 GitHub 时下载 **ZIP 附件**，不要下载 `Source code`。
 2. 在 Steam 中右键《Suzerain》→ 管理 → 浏览本地文件，找到 `Suzerain.exe` 所在文件夹。
 3. 将汉化 ZIP 放进这个文件夹，右键选择 **“解压到当前文件夹”**，同名文件选择覆盖。
 4. 启动游戏即可显示中文，无需在设置中切换语言。
@@ -28,7 +35,7 @@
 
 ## 当前状态与问题反馈
 
-汉化覆盖界面、剧情对话和说明文本。部分地图字段为保证兼容保留英文。已通过进入第一章等初步试玩，尚未完成全部剧情分支的通关验证。
+汉化覆盖界面、剧情对话和说明文本。部分地图字段为保证兼容保留英文。已通过进入第一章等初步试玩，并由维护者在另一台电脑完成安装和初步运行测试；尚未完成全部剧情分支的通关验证。
 
 如遇到错译、英文残留或卡顿，请在 [Issues](https://github.com/lby726/suzerain-hanhua/issues) 提供游戏版本、章节、发生步骤，以及对应文本或截图。
 
@@ -54,4 +61,6 @@ v12.0.0 汉化 ZIP 的 SHA-256：
 
 项目附带公开 GitHub 代码转载监测，用于发现疑似匹配线索，需要人工确认；它不能阻止搬运，也不覆盖所有网站、私有仓库或压缩包中的内容。
 
-项目唯一发布地址：https://github.com/lby726/suzerain-hanhua
+官方项目地址：https://github.com/lby726/suzerain-hanhua
+
+123 云盘为维护者提供的国内下载镜像，版本与校验值以上述发布说明为准。
