@@ -12,6 +12,7 @@ permissions:
 jobs:
   scan:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Search public GitHub code
@@ -22,15 +23,19 @@ jobs:
           HANHUA_PHRASES: ${{ secrets.HANHUA_PHRASES }}
           REPORT_FILE: monitor_report.json
         run: python3 monitor_public_reuse.py
-      - name: Upload report
+      - name: Upload report, including query failures
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: hanhua-reuse-report
           path: monitor_report.*
-      - name: Open one review issue for new matches
-        if: steps.scan.outputs.suspicious == 'true'
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Open one review issue for matches
+        if: always() && steps.scan.outputs.suspicious == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
         run: |
           count=$(gh issue list --state open --search "HanHua 转载监测 in:title" --json number --jq 'length')
           if [ "$count" = "0" ]; then
