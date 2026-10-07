@@ -15,3 +15,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh workflow run monitor-reuse.yml --repo lby726/suzerain-hanhua --ref main
+# Verify server-directed cooldown handling.
