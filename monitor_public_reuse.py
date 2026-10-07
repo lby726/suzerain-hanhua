@@ -2,6 +2,8 @@
 """Search public GitHub code for distinctive HanHua translation phrases.
 
 Set CANONICAL_REPO to owner/repository. Set GITHUB_TOKEN in CI for API access.
+Phrases are read from the HANHUA_PHRASES environment variable (one per line),
+falling back to a local phrases file when the variable is unset.
 This is a provenance alert, not an automatic takedown system.
 """
 from __future__ import annotations
@@ -10,8 +12,12 @@ import json, os, pathlib, sys, urllib.parse, urllib.request, urllib.error
 ROOT = pathlib.Path(__file__).resolve().parent
 repo = os.environ.get("CANONICAL_REPO", "").strip().lower()
 token = os.environ.get("GITHUB_TOKEN", "").strip()
-phrases_file = pathlib.Path(os.environ.get("PHRASES_FILE", str(ROOT / "monitor_phrases.txt")))
-phrases = [x.strip() for x in phrases_file.read_text(encoding="utf-8-sig").splitlines() if x.strip() and not x.lstrip().startswith("#")]
+phrases_env = os.environ.get("HANHUA_PHRASES", "").strip()
+if phrases_env:
+    phrases = [x.strip() for x in phrases_env.splitlines() if x.strip() and not x.lstrip().startswith("#")]
+else:
+    phrases_file = pathlib.Path(os.environ.get("PHRASES_FILE", str(ROOT / "monitor_phrases.txt")))
+    phrases = [x.strip() for x in phrases_file.read_text(encoding="utf-8-sig").splitlines() if x.strip() and not x.lstrip().startswith("#")]
 headers = {"Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "hanhua-provenance-monitor"}
 if token:
     headers["Authorization"] = f"Bearer {token}"
