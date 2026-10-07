@@ -2,7 +2,7 @@
 
 由 **lby726** 制作和维护，供拥有正版《Suzerain》的玩家免费使用。项目采用机器翻译、AI 辅助校对和人工修订，持续修正错译与术语。
 
-**[国内下载 · 123 云盘（v12）](https://1815736584.share.123pan.cn/123pan/6v8zVv-q6qWH)** · **[GitHub 下载（备用）](https://github.com/lby726/suzerain-hanhua/releases/latest)** · **[反馈问题](https://github.com/lby726/suzerain-hanhua/issues)**
+**[国内下载 · 123 云盘（v12）](https://1815736584.share.123pan.cn/123pan/6v8zVv-q6qWH)** · **[GitHub 下载（备用）](https://github.com/lby726/suzerain-hanhua/releases/latest)** · **[更新日志](./CHANGELOG.md)** · **[反馈问题](https://github.com/lby726/suzerain-hanhua/issues)**
 
 ## 适用版本
 
@@ -12,6 +12,8 @@
 - 当前公开版：**v12.0.0**
 
 本版针对上述构建制作。更新游戏后，请先确认汉化包是否适配新版本。
+
+更新日志从 **v12（首个公开发行版本）** 开始记录。v12.1 目前为未公开发布的测试版，修正内容见 [更新日志](./CHANGELOG.md)；从该版起，完整汉化包和修补包解压后均附带 `更新日志.txt`。
 
 ## 下载
 
