@@ -2,7 +2,7 @@
 
 由 **lby726** 制作和维护，供拥有正版《Suzerain》的玩家免费使用。项目采用机器翻译、AI 辅助校对和人工修订，持续修正错译与术语。
 
-**[下载 v12.1](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.1.0)** · **[更新日志](./CHANGELOG.md)** · **[反馈问题](https://github.com/lby726/suzerain-hanhua/issues/new/choose)**
+**[国内下载 · 123 云盘（v12.1）](https://1815736584.share.123pan.cn/123pan/6v8zVv-66qWH)** · **[GitHub 下载（备用）](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.1.0)** · **[更新日志](./CHANGELOG.md)** · **[反馈问题](https://github.com/lby726/suzerain-hanhua/issues/new/choose)**
 
 ## 适用版本
 
@@ -20,9 +20,11 @@
 - [GitHub Release · v12.1](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.1.0)：
   - **完整包** `Suzerain_zh-CN_v12.1.zip`，约256 MB：首次安装或完整覆盖更新均可使用。
   - **修补包** `Suzerain_zh-CN_patch_v12.1.zip`，约45 MB：需要先安装 v12，仅更新本次修正。
-- [123 云盘 · 旧版 v12](https://1815736584.share.123pan.cn/123pan/6v8zVv-q6qWH)：目前仍为 `Suzerain_简体中文汉化包_v12.zip`，不包含 v12.1 修正；安装后可再覆盖上方 v12.1 修补包。
+- [123 云盘 · v12.1 国内下载](https://1815736584.share.123pan.cn/123pan/6v8zVv-66qWH)：进入 **宗主国汉化 → v12.1** 文件夹。
+  - **完整包** `Suzerain_简体中文汉化包_v12.1.zip`，约256 MB：首次安装或完整覆盖更新均可使用。
+  - **修补包** `Suzerain_汉化修补包_v12.1.zip`，约45 MB：需要先安装 v12。
 
-国内 v12.1 镜像上传后会更新此处入口。只需下载一种适合自己的 v12.1 包；请下载 Release 的 ZIP 附件，不要下载 `Source code`。
+网盘保留了 `v12` 和 `v12.1` 两个版本文件夹，下载新版请进入 `v12.1`。首次安装选完整包，已安装 v12 的玩家可选修补包，无需两个包都下载。GitHub 下载请选择 Release 的 ZIP 附件，不要下载 `Source code`。
 
 ## 安装
 
@@ -75,4 +77,4 @@ v12.1 修补包 `Suzerain_zh-CN_patch_v12.1.zip` 的 SHA-256：
 
 官方项目地址：https://github.com/lby726/suzerain-hanhua
 
-123 云盘为维护者提供的国内下载镜像，请注意链接标注的版本；当前镜像仍为 v12。
+123 云盘为维护者提供的国内下载镜像，请进入 `v12.1` 文件夹获取当前版本，下载后可核对上方 SHA-256。
