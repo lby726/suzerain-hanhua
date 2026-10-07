@@ -1,0 +1,17 @@
+name: Verify HanHua monitor
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/verify-monitor-20261007.yml']
+permissions:
+  actions: write
+jobs:
+  dispatch:
+    if: github.repository == 'lby726/suzerain-hanhua'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Dispatch updated monitor
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run monitor-reuse.yml --repo lby726/suzerain-hanhua --ref main
