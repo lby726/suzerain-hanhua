@@ -1,0 +1,41 @@
+name: 汉化问题反馈
+description: 报告错译、译名不统一、英文残留、排版或运行问题
+title: "[汉化反馈] "
+body:
+  - type: markdown
+    attributes:
+      value: 感谢帮助完善汉化。尽量提供游戏中的原句或截图，方便找到对应文本；找不到英文原文也可以提交。
+  - type: input
+    id: patch_version
+    attributes:
+      label: 汉化包版本
+      placeholder: 例如 v12.1；不确定时请写下载的文件名
+    validations:
+      required: true
+  - type: input
+    id: game_version
+    attributes:
+      label: 游戏版本
+      placeholder: 例如 3.1.0.1.175 / Steam Build 23568265
+  - type: input
+    id: chapter
+    attributes:
+      label: 剧情位置
+      placeholder: 索德兰或里齐亚、章节、对话人物、百科条目或界面名称
+  - type: textarea
+    id: details
+    attributes:
+      label: 问题文本或截图
+      description: 描述具体问题，可直接粘贴中文、英文或拖入截图。
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 建议译法
+      description: 可选。术语或人名建议可附理由或参考。
+  - type: textarea
+    id: steps
+    attributes:
+      label: 发生步骤
+      description: 遇到卡顿、无法启动或排版问题时，请写明如何重现，以及是否安装过其他修改。
