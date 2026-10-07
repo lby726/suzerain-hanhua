@@ -17,7 +17,8 @@ import urllib.request
 ROOT = pathlib.Path(__file__).resolve().parent
 QUERY_INTERVAL_SECONDS = 15.0  # Stay below GitHub's 10 code searches/minute limit.
 MAX_RATE_RETRIES = 2
-MAX_RATE_WAIT_SECONDS = 120.0
+MAX_RATE_WAIT_SECONDS = 600.0
+MAX_RUN_SECONDS = 720.0
 
 
 def load_phrases() -> list[str]:
@@ -58,14 +59,18 @@ def rate_limit_delay(headers) -> float:
     return 60.0
 
 
-def search(phrase: str, repo: str, headers: dict[str, str]) -> dict:
+def search(phrase: str, repo: str, headers: dict[str, str], rate_budget=None, deadline=None) -> dict:
     query = f'"{phrase}" in:file -repo:{repo}'
     params = urllib.parse.urlencode({"q": query, "per_page": 100})
     request = urllib.request.Request(f"https://api.github.com/search/code?{params}", headers=headers)
-    waited = 0.0
+    if rate_budget is None:
+        rate_budget = {"remaining": MAX_RATE_WAIT_SECONDS}
     for attempt in range(MAX_RATE_RETRIES + 1):
+        if deadline is not None and time.monotonic() >= deadline:
+            return {"status": "failed", "error": "本轮运行时限已到，查询未完成"}
+        timeout = 30.0 if deadline is None else min(30.0, max(0.1, deadline - time.monotonic()))
         try:
-            with urllib.request.urlopen(request, timeout=30) as response:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
                 data = json.load(response)
             break
         except urllib.error.HTTPError as error:
@@ -76,10 +81,11 @@ def search(phrase: str, repo: str, headers: dict[str, str]) -> dict:
             if limited:
                 delay = rate_limit_delay(response_headers)
                 result["retry_after_seconds"] = math.ceil(delay)
-                if attempt < MAX_RATE_RETRIES and waited + delay <= MAX_RATE_WAIT_SECONDS:
+                within_deadline = deadline is None or time.monotonic() + delay + 30.0 < deadline
+                if attempt < MAX_RATE_RETRIES and delay <= rate_budget["remaining"] and within_deadline:
                     print(f"GitHub 限流 HTTP {error.code}；按服务器要求等待 {math.ceil(delay)} 秒后重试。")
                     time.sleep(delay)
-                    waited += delay
+                    rate_budget["remaining"] -= delay
                     continue
             return result
         except (urllib.error.URLError, TimeoutError, OSError):
@@ -154,6 +160,8 @@ def write_report(report: dict) -> None:
     for result in report["results"]:
         if result.get("error"):
             print(f"监测词 {result['phrase_id']}：{result['error']}。")
+            if result.get("retry_after_seconds"):
+                print(f"服务器建议等待 {result['retry_after_seconds']} 秒；本轮未完成，已保留诊断。")
 
 
 def main() -> int:
@@ -177,10 +185,12 @@ def main() -> int:
     if token:
         headers["Authorization"] = f"Bearer {token}"
     last_query = None
+    deadline = time.monotonic() + MAX_RUN_SECONDS
+    rate_budget = {"remaining": MAX_RATE_WAIT_SECONDS}
     for index, phrase in enumerate(phrases, 1):
         if last_query is not None:
             time.sleep(max(0.0, QUERY_INTERVAL_SECONDS - (time.monotonic() - last_query)))
-        result = search(phrase, repo, headers)
+        result = search(phrase, repo, headers, rate_budget, deadline)
         last_query = time.monotonic()
         result["phrase_id"] = f"{index:03d}"
         report["results"].append(result)
