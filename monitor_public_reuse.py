@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import email.utils
+import math
 import os
 import pathlib
 import re
@@ -13,7 +15,9 @@ import urllib.parse
 import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent
-QUERY_INTERVAL_SECONDS = 6.2  # GitHub code search: at most 10 requests/minute.
+QUERY_INTERVAL_SECONDS = 15.0  # Stay below GitHub's 10 code searches/minute limit.
+MAX_RATE_RETRIES = 2
+MAX_RATE_WAIT_SECONDS = 120.0
 
 
 def load_phrases() -> list[str]:
@@ -32,19 +36,56 @@ def load_phrases() -> list[str]:
     return phrases
 
 
+def rate_limit_delay(headers) -> float:
+    retry_after = headers.get("Retry-After")
+    if retry_after:
+        try:
+            delay = float(retry_after)
+        except ValueError:
+            try:
+                delay = email.utils.parsedate_to_datetime(retry_after).timestamp() - time.time()
+            except (ValueError, TypeError, OverflowError):
+                delay = 60.0
+        if math.isfinite(delay):
+            return max(1.0, delay)
+    if headers.get("X-RateLimit-Remaining") == "0":
+        try:
+            delay = float(headers.get("X-RateLimit-Reset", "")) - time.time() + 1.0
+            if math.isfinite(delay):
+                return max(1.0, delay)
+        except ValueError:
+            pass
+    return 60.0
+
+
 def search(phrase: str, repo: str, headers: dict[str, str]) -> dict:
     query = f'"{phrase}" in:file -repo:{repo}'
     params = urllib.parse.urlencode({"q": query, "per_page": 100})
     request = urllib.request.Request(f"https://api.github.com/search/code?{params}", headers=headers)
-    try:
-        with urllib.request.urlopen(request, timeout=30) as response:
-            data = json.load(response)
-    except urllib.error.HTTPError as error:
-        return {"status": "failed", "error": f"HTTP {error.code}"}
-    except (urllib.error.URLError, TimeoutError, OSError):
-        return {"status": "failed", "error": "网络连接失败或超时"}
-    except (ValueError, UnicodeError):
-        return {"status": "failed", "error": "接口未返回有效 JSON"}
+    waited = 0.0
+    for attempt in range(MAX_RATE_RETRIES + 1):
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                data = json.load(response)
+            break
+        except urllib.error.HTTPError as error:
+            result = {"status": "failed", "error": f"HTTP {error.code}"}
+            response_headers = error.headers or {}
+            limited = error.code == 429 or (error.code == 403 and (
+                response_headers.get("Retry-After") or response_headers.get("X-RateLimit-Remaining") == "0"))
+            if limited:
+                delay = rate_limit_delay(response_headers)
+                result["retry_after_seconds"] = math.ceil(delay)
+                if attempt < MAX_RATE_RETRIES and waited + delay <= MAX_RATE_WAIT_SECONDS:
+                    print(f"GitHub 限流 HTTP {error.code}；按服务器要求等待 {math.ceil(delay)} 秒后重试。")
+                    time.sleep(delay)
+                    waited += delay
+                    continue
+            return result
+        except (urllib.error.URLError, TimeoutError, OSError):
+            return {"status": "failed", "error": "网络连接失败或超时"}
+        except (ValueError, UnicodeError):
+            return {"status": "failed", "error": "接口未返回有效 JSON"}
 
     if (not isinstance(data, dict) or not isinstance(data.get("items"), list)
             or not isinstance(data.get("total_count"), int)):
@@ -97,7 +138,12 @@ def write_report(report: dict) -> None:
         elif result["status"] == "ok":
             lines.append("- 本次查询未发现非主仓库匹配。")
         lines.append("")
-    path.with_suffix(".md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    markdown = "\n".join(lines) + "\n"
+    path.with_suffix(".md").write_text(markdown, encoding="utf-8")
+    summary = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary:
+        with open(summary, "a", encoding="utf-8") as stream:
+            stream.write(markdown)
     output = os.environ.get("GITHUB_OUTPUT")
     if output:
         with open(output, "a", encoding="utf-8") as stream:
@@ -105,6 +151,9 @@ def write_report(report: dict) -> None:
             stream.write(f"status={report['status']}\n")
     print(f"监测状态：{labels[report['status']]}；完成 {report['completed_queries']}/{report['phrase_count']} 个查询；"
           f"存在外部匹配：{'是' if report['suspicious'] else '否'}。")
+    for result in report["results"]:
+        if result.get("error"):
+            print(f"监测词 {result['phrase_id']}：{result['error']}。")
 
 
 def main() -> int:
@@ -131,8 +180,8 @@ def main() -> int:
     for index, phrase in enumerate(phrases, 1):
         if last_query is not None:
             time.sleep(max(0.0, QUERY_INTERVAL_SECONDS - (time.monotonic() - last_query)))
-        last_query = time.monotonic()
         result = search(phrase, repo, headers)
+        last_query = time.monotonic()
         result["phrase_id"] = f"{index:03d}"
         report["results"].append(result)
         if result["status"] == "ok":
