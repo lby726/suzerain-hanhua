@@ -1,0 +1,38 @@
+name: Monitor HanHua reuse
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * 1"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Search public GitHub code
+        id: scan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CANONICAL_REPO: ${{ github.repository }}
+          PHRASES_FILE: monitor_phrases.txt
+          REPORT_FILE: monitor_report.json
+        run: python3 monitor_public_reuse.py
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: hanhua-reuse-report
+          path: monitor_report.*
+      - name: Open one review issue for new matches
+        if: steps.scan.outputs.suspicious == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          count=$(gh issue list --state open --search "HanHua 转载监测 in:title" --json number --jq 'length')
+          if [ "$count" = "0" ]; then
+            gh issue create --title "HanHua 转载监测：发现疑似外部匹配" --body-file monitor_report.md
+          fi
