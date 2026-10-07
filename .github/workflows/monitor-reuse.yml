@@ -19,7 +19,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CANONICAL_REPO: ${{ github.repository }}
-          PHRASES_FILE: monitor_phrases.txt
+          HANHUA_PHRASES: ${{ secrets.HANHUA_PHRASES }}
           REPORT_FILE: monitor_report.json
         run: python3 monitor_public_reuse.py
       - name: Upload report
