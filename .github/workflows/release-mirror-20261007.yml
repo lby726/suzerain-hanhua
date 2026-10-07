@@ -1,0 +1,55 @@
+name: Add v12 domestic download link
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/release-mirror-20261007.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    if: github.repository == 'lby726/suzerain-hanhua'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Update v12 notes and verify archive integrity
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request, urllib.error
+          BASE = 'https://api.github.com/repos/lby726/suzerain-hanhua/'
+          EXPECTED_BODY = "适用版本：Windows 64 位 Steam 版，游戏构建 3.1.0.1.175，Steam Build 23568265。\n\n安装：退出游戏，将汉化 ZIP 放到 Suzerain.exe 所在文件夹，选择“解压到当前文件夹”，覆盖同名文件后启动游戏即可，无需切换语言。不要下载 Source code，不要解压到新的同名子文件夹。\n\n恢复英文：在 Steam 中验证游戏文件完整性。\n\n本版修复了进入第一章时的已知地图资源卡顿。部分地图字段为保证兼容保留英文；欢迎通过 Issues 反馈错译或游戏运行问题。\n\n作者：lby726\n项目地址：https://github.com/lby726/suzerain-hanhua\n\n汉化 ZIP 的 SHA-256：\n087869eef8f0ce367c4f9691ea650617a19be3bf80e9a10f469f9f76474c9211\n\n**Full Changelog**: https://github.com/lby726/suzerain-hanhua/commits/v12.0.0\n"
+          BODY = "## 下载\n\n- [123 云盘 · v12 国内下载](https://1815736584.share.123pan.cn/123pan/6v8zVv-q6qWH)，文件名：`Suzerain_简体中文汉化包_v12.zip`。\n- GitHub 备用下载：本页 Assets 中的 `Suzerain_zh-CN_v12.zip`。\n\n两个入口提供同一版汉化安装包，约 229 MB；下方 SHA-256 可用于核对下载文件。\n\n适用版本：Windows 64 位 Steam 版，游戏构建 3.1.0.1.175，Steam Build 23568265。\n\n安装：退出游戏，将汉化 ZIP 放到 Suzerain.exe 所在文件夹，选择“解压到当前文件夹”，覆盖同名文件后启动游戏即可，无需切换语言。不要下载 Source code，不要解压到新的同名子文件夹。\n\n恢复英文：在 Steam 中验证游戏文件完整性。\n\n本版修复了进入第一章时的已知地图资源卡顿。部分地图字段为保证兼容保留英文。维护者已在另一台电脑完成安装和初步运行测试，尚未完成全部剧情分支的通关验证；欢迎通过 Issues 反馈错译或游戏运行问题。\n\n作者：lby726\n项目地址：https://github.com/lby726/suzerain-hanhua\n\n汉化 ZIP 的 SHA-256：\n087869eef8f0ce367c4f9691ea650617a19be3bf80e9a10f469f9f76474c9211\n\n**Full Changelog**: https://github.com/lby726/suzerain-hanhua/commits/v12.0.0\n"
+          EXPECTED_DIGEST = 'sha256:087869eef8f0ce367c4f9691ea650617a19be3bf80e9a10f469f9f76474c9211'
+          
+          def api(method, path, payload=None):
+              data = None if payload is None else json.dumps(payload, ensure_ascii=False).encode('utf-8')
+              request = urllib.request.Request(BASE + path, data=data, method=method, headers={
+                  'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
+                  'Accept': 'application/vnd.github+json',
+                  'X-GitHub-Api-Version': '2022-11-28',
+                  'Content-Type': 'application/json',
+                  'User-Agent': 'suzerain-release-maintenance'})
+              try:
+                  with urllib.request.urlopen(request, timeout=30) as response:
+                      raw = response.read()
+              except urllib.error.HTTPError as error:
+                  raise SystemExit(f'GitHub API returned HTTP {error.code}')
+              return json.loads(raw) if raw else None
+          
+          release = api('GET', 'releases/405402875')
+          asset = api('GET', 'releases/assets/617657059')
+          if release['tag_name'] != 'v12.0.0' or release.get('immutable'):
+              raise SystemExit('Unexpected release state; no changes made')
+          if release.get('body') not in (EXPECTED_BODY, BODY):
+              raise SystemExit('Release notes changed since preparation; no changes made')
+          if asset.get('digest') != EXPECTED_DIGEST or asset['size'] != 229270381:
+              raise SystemExit('Archive integrity check failed; no changes made')
+          updated = api('PATCH', 'releases/405402875', {'body': BODY})
+          if updated.get('body') != BODY:
+              raise SystemExit('Release notes verification failed')
+          print('Domestic mirror link and reported cross-computer test added; archive unchanged.')
+          PY
