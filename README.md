@@ -1,12 +1,42 @@
-# Public release checklist
+# Suzerain 简体中文汉化（非官方）
 
-1. Replace `canonical_source` in `公开发布信息.json` with the actual GitHub URL.
-2. Copy `LICENSE-TRANSLATION.txt`, `monitor_phrases.txt`, `monitor_public_reuse.py`, and `.github/workflows/monitor-reuse.yml` into the repository.
-3. Keep the game zip in a GitHub Release asset, not in normal Git history.
-4. Replace the placeholder author name with the author name you want displayed publicly.
-5. Enable Actions and run the workflow manually once to check the report.
-6. Create a signed tag for each release and publish the SHA-256 from `release_summary.json`.
+《Suzerain》的简体中文非官方汉化项目，由爱好者社区自发制作，供拥有游戏合法副本的玩家免费使用。
 
-The monitor searches public GitHub code for distinctive phrases. It cannot see private repositories,
-non-indexed file hosts, or copies that rewrite every phrase, so treat matches as leads for manual review.
+> 本项目为**非官方**汉化，与游戏开发商及相关版权方无关。汉化文本、校对与术语整理为本项目原创成果，不涉及对游戏原始代码、程序或官方资源的修改授权。
 
+## 特点
+
+- 面向《Suzerain》完整简体中文汉化
+- 术语整理统一，剧情翻译完整
+- 附带转载监测：自动扫描公开代码仓库，防止汉化成果被未署名转载
+
+## 安装
+
+1. 下载最新汉化包：前往右侧 **Releases** 页面，选择最新版本下载汉化压缩包。
+2. 解压后，将汉化文件放入游戏安装目录对应位置（覆盖前请先备份原文件）。
+3. 启动游戏，在设置中选择简体中文（如游戏内可切换语言）。
+
+> 需要您已**合法购买并拥有**《Suzerain》游戏副本。
+
+## 许可
+
+本项目的中文翻译部分适用自定义许可协议，详见 [LICENSE-TRANSLATION.txt](./LICENSE-TRANSLATION.txt)。
+
+简要说明：
+
+- ✅ 拥有合法游戏副本的个人玩家可**免费使用**本汉化包
+- ✅ 允许本地个人修改与测试
+- ❌ 禁止删除/遮挡作者署名、版本信息与来源说明
+- ❌ 禁止重新打包改名后发布
+- ❌ 禁止未经许可用于任何商业用途
+- ❌ 禁止将本项目中文翻译声称为他人原创
+
+转载或镜像必须保留完整署名、版本号、SHA-256 校验值和原始 GitHub 链接。本许可仅适用于本项目新增的中文翻译成果，不授予任何游戏原文、程序或官方资源的权利。
+
+## 版权声明
+
+版权所有 © 2026 lby726。汉化文本、校对与工具为本项目原创。
+
+---
+
+*本汉化包由社区爱好者制作，与游戏官方无关联。如你喜欢这款游戏，请支持正版。*
