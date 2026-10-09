@@ -2,17 +2,16 @@
 
 由 **lby726** 制作和维护，供拥有正版《Suzerain》的玩家免费使用。项目采用机器翻译、AI 辅助校对和人工修订，持续修正错译与术语。
 
-**[GitHub 下载 · 当前 v12.1](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.1.0)** · **[更新日志](./CHANGELOG.md)** · **[反馈问题](https://github.com/lby726/suzerain-hanhua/issues/new/choose)**
+**[GitHub 下载 · v12.2](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.2.0)** · **[更新日志](./CHANGELOG.md)** · **[反馈问题](https://github.com/lby726/suzerain-hanhua/issues/new/choose)**
 
-[国内下载 · 123云盘（目前为 v12.1）](https://1815736584.share.123pan.cn/123pan/6v8zVv-66qWH)。v12.2 的 GitHub 附件和国内镜像均尚未同步，请注意版本号。
+[国内下载 · 123云盘 · v12.2](https://1815736584.share.123pan.cn/123pan/6v8zVv-66qWH)
 
 ## 适用版本
 
 - Windows 64 位 Steam 版
 - 游戏构建：**3.1.0.1.175**
 - Steam Build：**23568265**
-- 当前公开下载：**v12.1**。
-- **v12.2 已准备好，Release 附件待上传**（计划标签：v12.2.0）；下方 v12.2 文件名及校验值用于核对新版附件。
+- 当前公开版：**v12.2**（GitHub Release 标签：v12.2.0）
 
 更新日志从 **v12（首个公开发行版本）** 开始记录。v12.2 包含地图汉化、玩家反馈的译名与错译修订、国家信息面板中文、中文数字单位、共用数字字体以及继续游戏和退出确认框修补，保留 v12.1 修复。
 
@@ -20,8 +19,8 @@
 
 - **完整包**：`Suzerain_zh-CN_v12.2.zip`，约292 MB。首次安装或完整覆盖更新均可使用。
 - **累计修补包**：`Suzerain_zh-CN_patch_v12.2.zip`，约112 MB。需要先安装 v12 或 v12.1。
-- v12.2 附件待上传。请在 [全部发行版本](https://github.com/lby726/suzerain-hanhua/releases) 中确认 v12.2.0 已出现且附件上传完成后再下载；当前可下载 v12.1。请选择 Release 的 ZIP 附件，无需两个包都下载，不要下载 `Source code`。
-- 123云盘目前保留 v12 与 v12.1；v12.2 国内镜像待同步。
+- [下载与校验文件](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.2.0)。请选择 Release 的 ZIP 附件，无需两个包都下载，不要下载 `Source code`。
+- 国内下载可使用 [123云盘](https://1815736584.share.123pan.cn/123pan/6v8zVv-66qWH)，请按文件名确认版本号。
 
 ## 安装
 
