@@ -2,66 +2,61 @@
 
 由 **lby726** 制作和维护，供拥有正版《Suzerain》的玩家免费使用。项目采用机器翻译、AI 辅助校对和人工修订，持续修正错译与术语。
 
-**[国内下载 · 123 云盘（v12.1）](https://1815736584.share.123pan.cn/123pan/6v8zVv-66qWH)** · **[GitHub 下载（备用）](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.1.0)** · **[更新日志](./CHANGELOG.md)** · **[反馈问题](https://github.com/lby726/suzerain-hanhua/issues/new/choose)**
+**[GitHub 下载 · 当前 v12.1](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.1.0)** · **[更新日志](./CHANGELOG.md)** · **[反馈问题](https://github.com/lby726/suzerain-hanhua/issues/new/choose)**
+
+[国内下载 · 123云盘（目前为 v12.1）](https://1815736584.share.123pan.cn/123pan/6v8zVv-66qWH)。v12.2 的 GitHub 附件和国内镜像均尚未同步，请注意版本号。
 
 ## 适用版本
 
 - Windows 64 位 Steam 版
 - 游戏构建：**3.1.0.1.175**
 - Steam Build：**23568265**
-- 当前公开版：**v12.1**（GitHub Release 标签：v12.1.0）
+- 当前公开下载：**v12.1**。
+- **v12.2 已准备好，Release 附件待上传**（计划标签：v12.2.0）；下方 v12.2 文件名及校验值用于核对新版附件。
 
-本版针对上述构建制作。更新游戏后，请先确认汉化包是否适配新版本。
-
-更新日志从 **v12（首个公开发行版本）** 开始记录。v12.1 修正英文残留、竞选资金法案、意识形态术语及人物和教派译名，详情见 [更新日志](./CHANGELOG.md)。从该版起，完整汉化包和修补包解压后均附带 `更新日志.txt`。
+更新日志从 **v12（首个公开发行版本）** 开始记录。v12.2 包含地图汉化、玩家反馈的译名与错译修订、国家信息面板中文、中文数字单位、共用数字字体以及继续游戏和退出确认框修补，保留 v12.1 修复。
 
 ## 下载
 
-- [GitHub Release · v12.1](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.1.0)：
-  - **完整包** `Suzerain_zh-CN_v12.1.zip`，约256 MB：首次安装或完整覆盖更新均可使用。
-  - **修补包** `Suzerain_zh-CN_patch_v12.1.zip`，约45 MB：需要先安装 v12，仅更新本次修正。
-- [123 云盘 · v12.1 国内下载](https://1815736584.share.123pan.cn/123pan/6v8zVv-66qWH)：进入 **宗主国汉化 → v12.1** 文件夹。
-  - **完整包** `Suzerain_简体中文汉化包_v12.1.zip`，约256 MB：首次安装或完整覆盖更新均可使用。
-  - **修补包** `Suzerain_汉化修补包_v12.1.zip`，约45 MB：需要先安装 v12。
-
-网盘保留了 `v12` 和 `v12.1` 两个版本文件夹，下载新版请进入 `v12.1`。首次安装选完整包，已安装 v12 的玩家可选修补包，无需两个包都下载。GitHub 下载请选择 Release 的 ZIP 附件，不要下载 `Source code`。
+- **完整包**：`Suzerain_zh-CN_v12.2.zip`，约292 MB。首次安装或完整覆盖更新均可使用。
+- **累计修补包**：`Suzerain_zh-CN_patch_v12.2.zip`，约112 MB。需要先安装 v12 或 v12.1。
+- v12.2 附件待上传。请在 [全部发行版本](https://github.com/lby726/suzerain-hanhua/releases) 中确认 v12.2.0 已出现且附件上传完成后再下载；当前可下载 v12.1。请选择 Release 的 ZIP 附件，无需两个包都下载，不要下载 `Source code`。
+- 123云盘目前保留 v12 与 v12.1；v12.2 国内镜像待同步。
 
 ## 安装
 
-1. 退出游戏，从上方任一下载入口获取汉化 ZIP；使用 GitHub 时下载 **ZIP 附件**，不要下载 `Source code`。
+1. 退出游戏，下载所需的汉化 ZIP。
 2. 在 Steam 中右键《Suzerain》→ 管理 → 浏览本地文件，找到 `Suzerain.exe` 所在文件夹。
-3. 将汉化 ZIP 放进这个文件夹，右键选择 **“解压到当前文件夹”**，同名文件选择覆盖。
-4. 启动游戏即可显示中文，无需在设置中切换语言。
+3. 将 ZIP 放进这个文件夹，右键选择 **“解压到当前文件夹”**，同名文件选择覆盖。
+4. 启动游戏即可显示中文，无需切换语言。解压后可在游戏目录查看 `更新日志.txt`。
 
-解压后的 `Suzerain_Data` 应与原有文件夹合并，不要解压到一个新的同名子文件夹。
+解压后的 `Suzerain_Data` 应与原有文件夹合并，不要解压到额外的子文件夹。
 
 ## 恢复英文
 
-退出游戏，在 Steam 中打开游戏属性 → 已安装文件 → **验证游戏文件的完整性**，恢复官方文件。
+退出游戏，在 Steam 游戏属性 → 已安装文件中**验证游戏文件完整性**，恢复官方文件。
 
 ## 当前状态与问题反馈
 
-汉化覆盖界面、剧情对话和说明文本，部分地图字段为保证兼容保留英文。v12 已完成进入第一章等初步试玩及另一台电脑的安装和初步运行测试；v12.1 已通过文本转换、资源结构检查和独立游戏启动检查，尚未完成全部剧情分支的通关验证。
+已通过资源结构、显示字段、格式、数值换算和独立引擎启动检查。v12 与此前地图测试包经过初步试玩；v12.2 合并版及最新数字字体调整仍需实际画面和剧情检查，未完成全部剧情分支验证。
 
-游戏文本和剧情分支众多，单人维护难以覆盖每一种情况。感谢小黑盒和 GitHub 玩家的反馈，本次英文残留、法案、术语及译名修正就来自大家提供的线索。欢迎继续一起完善汉化。
-
-如遇到错译、译名不统一、英文残留、排版或卡顿，请通过 [汉化问题反馈](https://github.com/lby726/suzerain-hanhua/issues/new/choose) 提交汉化版本、游戏版本、章节及对应文本或截图；运行问题请补充发生步骤。找不到英文原文也可以反馈，有建议译法时欢迎一并提供。
+感谢贴吧、小黑盒和 GitHub 玩家的反馈。遇到错译、译名不统一、英文残留、排版或卡顿时，请通过 [汉化问题反馈](https://github.com/lby726/suzerain-hanhua/issues/new/choose) 提交汉化版本、游戏版本、章节、原句或截图。运行问题请补充发生步骤，找不到英文原文也可以反馈。
 
 ## 下载校验
 
-v12.1 完整包 `Suzerain_zh-CN_v12.1.zip` 的 SHA-256：
+完整包的 SHA-256：
 
 ```text
-32c234377fb6d2d75db8f52376ad2feb59c3ce10e2e71712246f4fa817fc6dbd
+441bdbf1690ff8bcdba73bd2035dabb57ec15384420daa80e4c1960329d7e40f
 ```
 
-v12.1 修补包 `Suzerain_zh-CN_patch_v12.1.zip` 的 SHA-256：
+修补包的 SHA-256：
 
 ```text
-632dc5704c0f1b5df60c5dfd9b204696416bfe762cf9d07e3282ecfced1e3abe
+6b24c90471817977eee5a3ff3cb1a951c17cff18c02e331a88004dbf6e495935
 ```
 
-旧版 v12 的校验值见 [v12.0.0 Release](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.0.0)。只重命名 ZIP 不会改变校验值，后续版本请以对应 Release 为准。
+也可下载 Release 附件 `SHA256SUMS.txt` 核对。只重命名 ZIP 不会改变校验值；历史版本见 [全部发行版本](https://github.com/lby726/suzerain-hanhua/releases)。
 
 ## 许可与署名
 
@@ -76,5 +71,3 @@ v12.1 修补包 `Suzerain_zh-CN_patch_v12.1.zip` 的 SHA-256：
 项目附带公开 GitHub 代码转载监测，用于发现疑似匹配线索，需要人工确认；它不能阻止搬运，也不覆盖所有网站、私有仓库或压缩包中的内容。
 
 官方项目地址：https://github.com/lby726/suzerain-hanhua
-
-123 云盘为维护者提供的国内下载镜像，请进入 `v12.1` 文件夹获取当前版本，下载后可核对上方 SHA-256。

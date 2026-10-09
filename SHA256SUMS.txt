@@ -1,0 +1,2 @@
+441bdbf1690ff8bcdba73bd2035dabb57ec15384420daa80e4c1960329d7e40f  Suzerain_zh-CN_v12.2.zip
+6b24c90471817977eee5a3ff3cb1a951c17cff18c02e331a88004dbf6e495935  Suzerain_zh-CN_patch_v12.2.zip
