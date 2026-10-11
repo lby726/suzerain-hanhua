@@ -2,24 +2,24 @@
 
 由 **lby726** 制作和维护，供拥有正版《Suzerain》的玩家免费使用。项目采用机器翻译、AI 辅助校对和人工修订，持续修正错译与术语。
 
-**[GitHub 下载 · v12.2](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.2.0)** · **[更新日志](./CHANGELOG.md)** · **[反馈问题](https://github.com/lby726/suzerain-hanhua/issues/new/choose)**
+**[GitHub 下载 · v12.3](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.3)** · **[更新日志](./CHANGELOG.md)** · **[反馈问题](https://github.com/lby726/suzerain-hanhua/issues/new/choose)**
 
-[国内下载 · 123云盘 · v12.2](https://1815736584.share.123pan.cn/123pan/6v8zVv-66qWH)
+[国内下载 · 123云盘 · v12.3](https://1815736584.share.123pan.cn/123pan/6v8zVv-66qWH)
 
 ## 适用版本
 
 - Windows 64 位 Steam 版
 - 游戏构建：**3.1.0.1.175**
 - Steam Build：**23568265**
-- 当前公开版：**v12.2**（GitHub Release 标签：v12.2.0）
+- 当前公开版：**v12.3**（GitHub Release 标签：v12.3）
 
-更新日志从 **v12（首个公开发行版本）** 开始记录。v12.2 包含地图汉化、玩家反馈的译名与错译修订、国家信息面板中文、中文数字单位、共用数字字体以及继续游戏和退出确认框修补，保留 v12.1 修复。
+更新日志从 **v12（首个公开发行版本）** 开始记录。v12.3 根据贴吧反馈集中修订百科、新闻、术语和人物译名，补齐读档菜单、事件菜单及人物标题，改善部分排版，保留此前地图、国家信息面板、数字字体等修复。
 
 ## 下载
 
-- **完整包**：`Suzerain_zh-CN_v12.2.zip`，约292 MB。首次安装或完整覆盖更新均可使用。
-- **累计修补包**：`Suzerain_zh-CN_patch_v12.2.zip`，约112 MB。需要先安装 v12 或 v12.1。
-- [下载与校验文件](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.2.0)。请选择 Release 的 ZIP 附件，无需两个包都下载，不要下载 `Source code`。
+- **GitHub 完整包**：[`Suzerain_._v12.3.zip`](https://github.com/lby726/suzerain-hanhua/releases/download/v12.3/Suzerain_._v12.3.zip)，约291 MB。首次安装或覆盖更新均可使用，已安装旧版汉化的玩家也可直接使用完整包更新。
+- 123云盘已由作者确认同步 v12.3，进入分享目录后请按版本号选择文件。
+- [GitHub Release](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.3)。请选择汉化 ZIP 附件，不要下载 `Source code`。
 - 国内下载可使用 [123云盘](https://1815736584.share.123pan.cn/123pan/6v8zVv-66qWH)，请按文件名确认版本号。
 
 ## 安装
@@ -37,25 +37,21 @@
 
 ## 当前状态与问题反馈
 
-已通过资源结构、显示字段、格式、数值换算和独立引擎启动检查。v12 与此前地图测试包经过初步试玩；v12.2 合并版及最新数字字体调整仍需实际画面和剧情检查，未完成全部剧情分支验证。
+包内“候选／未发布”等字样保留打包时的状态；v12.3 已于2026年10月11日公开发布，当前发行状态以本页及 GitHub Release 为准。
+
+已完成资源结构、显示字段、文本格式和显示代码检查，以及本机启动、读档、部分对话与界面抽查。卡尔三个喊话节点已确认中文逐字抖动可以播放。测试期间曾在退出阶段出现一次异常，后续复测未再出现；未完成全部剧情分支的通关验证。
 
 感谢贴吧、小黑盒和 GitHub 玩家的反馈。遇到错译、译名不统一、英文残留、排版或卡顿时，请通过 [汉化问题反馈](https://github.com/lby726/suzerain-hanhua/issues/new/choose) 提交汉化版本、游戏版本、章节、原句或截图。运行问题请补充发生步骤，找不到英文原文也可以反馈。
 
 ## 下载校验
 
-完整包的 SHA-256：
+v12.3 完整包的 SHA-256：
 
 ```text
-441bdbf1690ff8bcdba73bd2035dabb57ec15384420daa80e4c1960329d7e40f
+ba17b920ab549f88a76a7047aeac6b833ba50d7dad874936aad3baca4f19c905
 ```
 
-修补包的 SHA-256：
-
-```text
-6b24c90471817977eee5a3ff3cb1a951c17cff18c02e331a88004dbf6e495935
-```
-
-也可下载 Release 附件 `SHA256SUMS.txt` 核对。只重命名 ZIP 不会改变校验值；历史版本见 [全部发行版本](https://github.com/lby726/suzerain-hanhua/releases)。
+只重命名 ZIP 不会改变校验值；历史版本见 [全部发行版本](https://github.com/lby726/suzerain-hanhua/releases)。
 
 ## 许可与署名
 
