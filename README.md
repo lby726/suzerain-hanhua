@@ -18,6 +18,7 @@
 ## 下载
 
 - **GitHub 完整包**：[`Suzerain_._v12.3.zip`](https://github.com/lby726/suzerain-hanhua/releases/download/v12.3/Suzerain_._v12.3.zip)，约291 MB。首次安装或覆盖更新均可使用，已安装旧版汉化的玩家也可直接使用完整包更新。
+- **GitHub 累计修补包**：[`Suzerain.v12.3.zip`](https://github.com/lby726/suzerain-hanhua/releases/download/v12.3/Suzerain.v12.3.zip)，约112 MB。需要已安装 v12、v12.1 或 v12.2；完整包和修补包任选其一。
 - 123云盘已由作者确认同步 v12.3，进入分享目录后请按版本号选择文件。
 - [GitHub Release](https://github.com/lby726/suzerain-hanhua/releases/tag/v12.3)。请选择汉化 ZIP 附件，不要下载 `Source code`。
 - 国内下载可使用 [123云盘](https://1815736584.share.123pan.cn/123pan/6v8zVv-66qWH)，请按文件名确认版本号。
@@ -49,6 +50,12 @@ v12.3 完整包的 SHA-256：
 
 ```text
 ba17b920ab549f88a76a7047aeac6b833ba50d7dad874936aad3baca4f19c905
+```
+
+v12.3 累计修补包的 SHA-256：
+
+```text
+80995ca717356474e04934f260abd4f449d89088085cb7a79bd74790cebbefaa
 ```
 
 只重命名 ZIP 不会改变校验值；历史版本见 [全部发行版本](https://github.com/lby726/suzerain-hanhua/releases)。
